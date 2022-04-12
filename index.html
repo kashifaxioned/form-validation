@@ -1,10 +1,10 @@
 <!doctype html>
 <!-- If multi-language site, reconsider usage of html lang declaration here. -->
-<html lang="en"> 
+<html lang="en">
 
 <head>
   <meta charset="utf-8">
-  <title>Client</title>
+  <title>Login</title>
   <!-- View-port Basics: http://mzl.la/VYREaP -->
   <!-- This meta tag is used for mobile device to display the page without any zooming,
        so how much the device is able to fit on the screen is what's shown initially. 
@@ -13,10 +13,10 @@
   <!-- Place favicon.ico in the root directory: mathiasbynens.be/notes/touch-icons -->
   <link rel="shortcut icon" href="favicon.ico" />
   <!--font-awesome link for icons-->
-  <link rel="stylesheet" media="screen" href="assets/vendor/font-awesome/css/all.min.css" >
+  <link rel="stylesheet" media="screen" href="assets/vendor/font-awesome/css/all.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <!-- Default style-sheet is for 'media' type screen (color computer display).  -->
-  <link rel="stylesheet" media="screen" href="assets/css/style.css" >
+  <link rel="stylesheet" media="screen" href="assets/css/style.css">
 </head>
 
 <body>
@@ -24,17 +24,71 @@
   <div class="container">
     <!--header section start-->
     <header>
-      
+
     </header>
     <!--header section start-->
     <!--main section start-->
     <main>
-
+      <div class="wrapper">
+        <h2 class="login">login</h2>
+        <div class="form-container">
+          <form action="/">
+            <div class="form-group">
+              <input type="text" name="fName" placeholder="First Name" class="fName" required>
+              <span class="error">Name should contain only letters</span>
+            </div>
+            <div class="form-group">
+              <input type="text" name="lName" placeholder="Last Name" class="lName" required>
+              <span class="error">Name should contain only letters</span>
+            </div>
+            <div class="form-group">
+              <input type="text" name="address" placeholder="Address" class="address" required>
+              <span class="error"></span>
+            </div>
+            <div class="form-group">
+              <div class="male">
+                <input type="radio" name="male" class="gender" required>
+                <label>male</label>
+              </div>
+              <div class="female">
+                <input type="radio" name="female" class="gender" required>
+                <label>female</label>
+              </div>
+              <span class="error">Please select your gender</span>
+            </div>
+            <div class="form-group">
+              <input type="checkbox" class="checked" name="checked" required>
+              <label>I accept the policy</label>
+              <span class="error">Please accept the policy</span>
+            </div>
+            <div class="form-control">
+              <button type="submit">submit</button>
+            </div>
+          </form>
+        </div>
+        <div class="form-entries">
+          <ul class="entries-list">
+            <li class="entries-item">
+              <ul class="entries-item-list">
+                <li class="entries-value">Dummy value</li>
+                <li class="entries-value">Dummy value</li>
+                <li class="entries-value">Dummy value</li>
+                <li class="edit-btn">
+                  <button>edit</button>
+                </li>
+                <li class="delete-btn">
+                  <button>delete</button>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
     </main>
     <!--main section end-->
 
     <!--footer section start-->
-    <footer>      
+    <footer>
 
     </footer>
     <!--footer section end-->
@@ -43,4 +97,5 @@
   <!--container end-->
   <script src="assets/js/script.js"></script>
 </body>
+
 </html>
