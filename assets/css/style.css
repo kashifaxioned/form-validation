@@ -121,9 +121,135 @@ li {
 =================================*/
 
 
+/*=================================
+  form-container styling starts here
+=================================*/
+
+.login {
+  margin-bottom: 40px;
+  font-size: 40px;
+  text-align: center;
+  text-transform: capitalize;
+}
+
+.form-container {
+  width: 30%;
+  margin: 80px auto 0;
+  padding: 60px 40px;
+  border-radius: 20px;
+  background-color: #40DFEF;
+  color: #383838;
+}
+
+.form-container form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.form-group:nth-child(4) {
+  flex-direction: row;
+  gap: 20px;
+}
+
+.form-group:nth-child(5) { flex-direction: row; }
+
+.form-group:nth-child(5) label { font-size: 14px; }
+
+.form-group:nth-child(5) .error { margin-left: 40px; }
 
 
+.fName, .lName, .address {
+  box-sizing: border-box;
+  border: none;
+  border-radius: 5px;
+  padding: 10px;
+  font-size: 18px;
+  font-family: inherit;
+}
 
+.male label, .female label { text-transform: capitalize; }
+
+.error {
+  display: none;
+  color: #F55353;
+  font-size: 12px;
+  font-style: italic;
+}
+
+.btn {
+  padding: 12px 35px;
+  border: 1px solid #525E75;
+  border-radius: 10px;
+  background-color: #525E75;
+  color: #fff;
+  font-size: 16px;
+  text-transform: capitalize;
+}
+
+.btn:hover {
+  background-color: transparent;
+  color: #525E75;
+}
+
+
+/*=================================
+  form-container styling ends here
+=================================*/
+
+
+/*=================================
+  form-entries styling starts here
+=================================*/
+
+.form-entries { margin: 80px 0; }
+
+.entries-list {
+  border: .3px solid #c6cace;
+  display: none;
+  flex-direction: column;
+}
+
+.entries-item { border-bottom: .3px solid #c6cace; }
+
+.entries-item-list {
+  display: flex;
+  justify-content: space-between;
+}
+
+.entries-item:last-child { border-bottom: none; }
+
+.entries-item-list li {
+  padding: 20px;
+  border-right: .3px solid #c6cace;
+}
+
+.entries-item-list li:last-child { border-right: none; }
+
+.entries-value { flex-basis: 20%; }
+
+.entries-value:nth-child(4), .delete-btn, .edit-btn { flex-basis: 10%; }
+
+.entries-btn {
+  background-color: transparent;
+  border: none;
+  color: #40DFEF;
+  text-transform: capitalize;
+}
+
+.entries-btn:hover { transform: scale(1.1); }
+
+.error-border { border: 2px solid #F55353; }
+
+/*=================================
+  form-entries styling starts here
+=================================*/
 
 
 
