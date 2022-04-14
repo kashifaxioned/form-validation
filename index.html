@@ -13,8 +13,9 @@
   <!-- Place favicon.ico in the root directory: mathiasbynens.be/notes/touch-icons -->
   <link rel="shortcut icon" href="favicon.ico" />
   <!--font-awesome link for icons-->
-  <link rel="stylesheet" media="screen" href="assets/vendor/font-awesome/css/all.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <!-- jquery link for functionalities -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   <!-- Default style-sheet is for 'media' type screen (color computer display).  -->
   <link rel="stylesheet" media="screen" href="assets/css/style.css">
 </head>
@@ -30,58 +31,44 @@
     <!--main section start-->
     <main>
       <div class="wrapper">
-        <h2 class="login">login</h2>
         <div class="form-container">
-          <form action="/">
+        <h2 class="login">login</h2>
+          <form  class="login-form">
             <div class="form-group">
               <input type="text" name="fName" placeholder="First Name" class="fName" required>
               <span class="error">Name should contain only letters</span>
             </div>
             <div class="form-group">
-              <input type="text" name="lName" placeholder="Last Name" class="lName" required>
+              <input type="text" name="lName" value="" placeholder="Last Name" class="lName" required>
               <span class="error">Name should contain only letters</span>
             </div>
             <div class="form-group">
-              <input type="text" name="address" placeholder="Address" class="address" required>
-              <span class="error"></span>
+              <textarea name="address" class="address" placeholder="Address" required ></textarea>
+              <span class="error">Write your address</span>
             </div>
             <div class="form-group">
               <div class="male">
-                <input type="radio" name="male" class="gender" required>
-                <label>male</label>
+                <input type="radio" name="gender" value="male" class="gender" required>
+                <label for="male">male</label>
               </div>
               <div class="female">
-                <input type="radio" name="female" class="gender" required>
-                <label>female</label>
+                <input type="radio" name="gender" value="female" class="gender" required>
+                <label for="female">female</label>
               </div>
               <span class="error">Please select your gender</span>
             </div>
             <div class="form-group">
-              <input type="checkbox" class="checked" name="checked" required>
-              <label>I accept the policy</label>
+              <input type="checkbox" class="checked" required>
+              <label for="checked">I accept the policy</label>
               <span class="error">Please accept the policy</span>
             </div>
             <div class="form-control">
-              <button type="submit">submit</button>
+              <button type="submit" class="submit-btn btn">submit</button>
             </div>
           </form>
         </div>
         <div class="form-entries">
-          <ul class="entries-list">
-            <li class="entries-item">
-              <ul class="entries-item-list">
-                <li class="entries-value">Dummy value</li>
-                <li class="entries-value">Dummy value</li>
-                <li class="entries-value">Dummy value</li>
-                <li class="edit-btn">
-                  <button>edit</button>
-                </li>
-                <li class="delete-btn">
-                  <button>delete</button>
-                </li>
-              </ul>
-            </li>
-          </ul>
+          <ul class="entries-list"></ul>
         </div>
       </div>
     </main>
