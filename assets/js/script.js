@@ -2,136 +2,228 @@
 
 */
 
-// Initializing every DOM element 
+$(() => {
+  // Initializing required variables
+  let getDataArr = [];
+  let pushDataArr = [];
+  let editIndex;
+  let formGender;
+  let submitForm = false;
 
-let data = $(".login-form")
-let fName = $(".fName")
-let lName = $(".lName")
-let address = $(".address")
-let gender = $(".gender")
-let subBtn = $(".submit-btn")
-let formList =$(".entries-list")
-let editBtn = $(".edit-btn")
-let deleteBtn = $(".delete-btn")
+  // Initializing every DOM element
 
-// Initialinzing reg expression
+  let fName = $(".fName");
+  let lName = $(".lName");
+  let address = $(".address");
+  let gender = $("input[name='gender']");
+  let subBtn = $(".submit-btn");
+  let formList = $(".entries-list");
+  let editBtn = $(".edit-btn");
+  let deleteBtn = $(".delete-btn");
+  let policy = $(".form-group-checkbox .checkbox");
+  let nameElements = $("input[type=text]");
+  let textArea = $("textarea");
 
-let reg = /^[A-Za-z]+$/
-let formGender;
-let submitForm = false;
+  // Initialinzing reg expression
+  let reg = /^[A-Za-z]+$/;
+  // No value validation for all elements
+  $(".btn").click((e) => {
+    $(".error").addClass("hide");
+    nameElements.map((idx, ele) => {
+      nameEle = $(ele);
+      validateNoValueString(nameEle);
+    });
+    validateNoValueString(textArea);
+    validateNoValueGender(gender);
+    validateNotChecked(policy);
+  });
 
-// adding event listeners
-fName.on("blur", validateName)
-lName.on("blur", validateName)
-address.on("blur", validateAddress)
-data.submit(formSubmit)
-
-// Validating name
-
-function validateName(e) {
-
-  let targetElement = $(e.target)
-
-  if ((targetElement.val().length < 12) && (targetElement.val().length > 3)) {
-    if (reg.test(targetElement.val())) {
-      targetElement.removeClass("error-border").siblings().css("display", "none")
-      submitForm = true
+  // No value validation for gender
+  function validateNoValueGender(formGender) {
+    if (!(formGender[0].checked || formGender[1].checked)) {
+      formGender.map((idx, ele) => {
+        $(ele).next().addClass("error-underline");
+      });
+      $(".form-group-gender .error").removeClass("hide");
+      submitForm = false;
     } else {
-      targetElement.addClass("error-border").siblings().css("display", "block").html("Name should contain 3 to 12 characters and not should contain numbers")
-      submitForm = false
+      formGender.map((idx, ele) => {
+        $(ele).next().removeClass("error-underline");
+      });
+      $(".form-group-gender .error").addClass("hide");
+      submitForm = true;
     }
-  } else {
-    targetElement.addClass("error-border").siblings().css("display", "block").html("Name should contain 3 to 12 characters and not should contain numbers")
-    submitForm = false
   }
-}
 
-// Validating address
-
-function validateAddress(e) {
-  let targetElement = $(e.target)
-
-  if ((targetElement.val().length < 30) && (targetElement.val().length > 10)) {
-    targetElement.removeClass("error-border").siblings().css("display", "none")
-    submitForm = true
-  } else {
-    targetElement.addClass("error-border").siblings().css("display", "block").html("Address should contain 10 to 30 characters")
-    submitForm = false
+  // No value validation for string
+  function validateNoValueString(formEle) {
+    val = formEle.val();
+    if (val.length === 0) {
+      nameAttr = formEle.attr("name");
+      noValue(nameAttr);
+      submitForm = false;
+    }
   }
-}
+  // function for DOM manipulation after validating
+  function noValue(name) {
+    $(`input[name = "${name}"]`)
+      .addClass("error-border")
+      .next()
+      .removeClass("hide")
+      .html(`Please write your ${name}`);
+    $(`textarea[name = "${name}"]`)
+      .addClass("error-border")
+      .next()
+      .removeClass("hide")
+      .html(`Please write your ${name}`);
+  }
 
-// getting selected gender
+  // No value validation for policy checked
+  function validateNotChecked(policy) {
+    if (!policy.prop("checked")) {
+      policy.next().addClass("error-underline");
+      $(".form-group-checkbox .error").removeClass("hide");
+      submitForm = false;
+    } else {
+      policy.next().removeClass("error-underline");
+      $(".form-group-checkbox .error").addClass("hide");
+    }
+  }
 
-gender.click((e) => { formGender = $(e.target).val() })
+  // adding event listeners
+  fName.on("blur", validateName);
+  lName.on("blur", validateName);
+  address.on("blur", () => {
+    $(`textarea`).removeClass("error-border").next().addClass("hide");
+  });
 
+  // Validating name
 
-// form submit function
+  function validateName(e) {
+    let targetElement = $(e.target);
 
-function formSubmit(event) {
+    if (targetElement.val().length < 12 && targetElement.val().length > 3) {
+      if (reg.test(targetElement.val())) {
+        targetElement.removeClass("error-border").siblings().addClass("hide");
+        submitForm = true;
+      } else {
+        targetElement
+          .addClass("error-border")
+          .siblings()
+          .addClass("show")
+          .html("Name should contain only alphabets");
+        submitForm = false;
+      }
+    } else {
+      targetElement
+        .addClass("error-border")
+        .siblings()
+        .addClass("show")
+        .html("Name should contain 3 to 12 characters");
+      submitForm = false;
+    }
+  }
 
-  let firstName = fName.val()
-  let lastName = lName.val()
-  let formAddress = address.val()
+  // getting selected gender
 
-  if(submitForm) {
-  updateList(firstName, lastName, formAddress, formGender)
-}else{
-  alert("FIll the form correctly")
-}
-  event.preventDefault()
-}
+  gender.click((e) => (formGender = $(e.target).val()));
 
+  // form submit function
+  $(".login-form").submit((e) => {
+    getFormData(e);
+  });
 
-// update the form entries
+  // retrieving form data
 
-function updateList(firstName, lastName, formAddress, formGender) {
-  formList.css("display", "flex")
-  formList.append(`
+  function getFormData(e) {
+    e.preventDefault();
+    let person = {
+      firstName: fName.val(),
+      lastName: lName.val(),
+      address: address.val(),
+      gender: formGender,
+    };
+    if (submitForm) {
+      $(e.target).trigger("reset");
+      let ele = e.originalEvent.submitter.classList[1];
+      if (ele === "update-btn") {
+        pushDataArr.splice(editIndex, 1, person);
+      } else if (ele === "submit-btn") {
+        pushDataArr.push(person);
+      }
+      console.log(pushDataArr);
+      updateLS(pushDataArr);
+    }
+  }
+
+  // update the local storage
+
+  function updateLS(arr) {
+    localStorage.setItem("formData", JSON.stringify(arr));
+    formList.addClass("flexShow");
+    getDataArr = JSON.parse(localStorage.getItem("formData"));
+    updateList(getDataArr);
+    subBtn.html("Submit").removeClass("update-btn").addClass("submit-btn");
+    $(`.gender`).attr("checked", false);
+  }
+
+  // update the entry list items
+
+  function updateList(arr) {
+    $(".entries-item").remove();
+    arr.map((ele, idx) => {
+      formList.append(`
   <li class="entries-item">
   <ul class="entries-item-list">
-    <li class="entries-value">${firstName}</li>
-    <li class="entries-value">${lastName}</li>
-    <li class="entries-value">${formAddress}</li>
-    <li class="entries-value">${formGender}</li>
-    <li>
-      <button class="entries-btn edit-btn">edit</button>
-    </li>
-    <li>
-      <button type="button" class="entries-btn delete-btn">delete</button>
-    </li>
+  <li class="entries-value">${ele.firstName}</li>
+  <li class="entries-value">${ele.lastName}</li>
+  <li class="entries-value">${ele.address}</li>
+  <li class="entries-value">${ele.gender}</li>
+  <li>
+  <button class="entries-btn edit-btn">edit</button>
+  </li>
+  <li>
+  <button type="button" class="entries-btn delete-btn">delete</button>
+  </li>
   </ul>
-</li>
-  `)
+  </li>
+  `);
+    });
+    if ($(".entries-item").length === 0) {
+      formList.addClass("hide");
+    } else {
+      formList.addClass("flexShow");
+    }
 
-  subBtn.html("Submit")
-
-  console.log($(".entries-item"))
-
-  editBtn = $(".edit-btn")
-  deleteBtn = $(".delete-btn")
-  
-  editBtn.click(editItem)
-  deleteBtn.click(deletItem)
-
-  
-}
-
-// delete form entries
-
-function deletItem(e) { 
-  $(e.target).parent().parent().parent().remove() 
-  if($(".entries-item").length === 0) {
-    formList.css("display", "none")
+    editBtn = $(".edit-btn");
+    deleteBtn = $(".delete-btn");
+    editBtn.click(editItem);
+    deleteBtn.click(deletItem);
   }
-}
 
-// edit form entries
+  // delete form entries
 
-function editItem(e) {
-  deletItem(e)
-  const values = ($(e.target).parent().parent().children(".entries-value"))
-  fName.val($(values[0]).text())
-  lName.val($(values[1]).text())
-  address.val($(values[2]).text())
-  subBtn.html("Update")
-}
+  function deletItem(e) {
+    let removeIndex = $(e.target)
+      .parent()
+      .parent()
+      .parent()
+      .has(e.target)
+      .index();
+    pushDataArr = pushDataArr.filter((ele, idx) => idx !== removeIndex);
+    updateLS(pushDataArr);
+  }
+
+  // edit form entries
+
+  function editItem(e) {
+    editIndex = $(e.target).parent().parent().parent().has(e.target).index();
+    let editElement = pushDataArr[editIndex];
+    fName.val(editElement.firstName);
+    lName.val(editElement.lastName);
+    address.val(editElement.address);
+    $(`.${editElement.gender.toLowerCase()}`).attr("checked", true);
+    subBtn.html("Update").addClass("update-btn").removeClass("submit-btn");
+    console.log(editIndex);
+  }
+});
