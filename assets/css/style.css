@@ -1,13 +1,13 @@
 @charset "utf-8";
 /* ==========================================================================
-   1. CSS Reset Code
-   ========================================================================== */
+1. CSS Reset Code
+========================================================================== */
 
 /* 1.1. Eric Meyers Reset
-   http://meyerweb.com/eric/tools/css/reset/
-   v2.0 | 20110126
-   License: none (public domain)
-   ========================================================================== */
+http://meyerweb.com/eric/tools/css/reset/
+v2.0 | 20110126
+License: none (public domain)
+========================================================================== */
 html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p,
 blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img,
 ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center,
@@ -15,18 +15,18 @@ dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody,
 tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure,
 figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary,
 time, mark, audio, video {
-  margin: 0;
-  padding: 0;
-  border: 0;
-  font-size: 100%;
-  font: inherit;
-  vertical-align: baseline;
+margin: 0;
+padding: 0;
+border: 0;
+font-size: 100%;
+font: inherit;
+vertical-align: baseline;
 }
 
 /* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
-  display: block;
+display: block;
 }
 
 /* Force scrollbar */
@@ -41,41 +41,41 @@ label,
 input[type='button'],
 input[type='submit'],
 button {
-  cursor: pointer;
+cursor: pointer;
 }
 
 strong {
-  font-weight: bold;
-  font-family: inherit;
-  font-size: inherit;
+font-weight: bold;
+font-family: inherit;
+font-size: inherit;
 }
 
 em { font-style: italic; }
 
 img {
-  width: 100%;
-  border: 0;
-  vertical-align: middle;
+width: 100%;
+border: 0;
+vertical-align: middle;
 }
 
 sub,
 sup {
-  vertical-align: baseline;
-  position: relative;
-  font-size: 55%;
-  line-height: 0;
+vertical-align: baseline;
+position: relative;
+font-size: 55%;
+line-height: 0;
 }
 
 sup { top: -.7em; }
 sub { bottom: -.25em; }
 
 /* 1.2. Clear Fix
-   ========================== */
+========================== */
 
 .cf:before,
 .cf:after {
-  display: table;
-  content: " ";
+display: table;
+content: " ";
 }
 
 .cf:after { clear: both; }
@@ -83,79 +83,78 @@ sub { bottom: -.25em; }
 
 /*for all*/
 body {
-  box-sizing: border-box;
-  font-family: sans-serif;
+box-sizing: border-box;
+font-family: sans-serif;
 }
 
 a { 
-  display: inline-block;
-  text-decoration: none; 
+display: inline-block;
+text-decoration: none; 
 }
 
 li {
-  display: inline-block;
-  list-style-type: none;
+display: inline-block;
+list-style-type: none;
 }
 
 /*for wrapper*/
 .wrapper {
-  max-width: 1360px;
-  width: 86%; 
-  margin: 0 auto;
+max-width: 1360px;
+width: 86%; 
+margin: 0 auto;
 }
 /*=================================
-  Header styling starts here
+Header styling starts here
 =================================*/
 
 
 
 
 
+/*=================================
+Header styling ends here
+=================================*/ 
 
 /*=================================
-  Header styling ends here
-=================================*/  
-
-/*=================================
-  main styling starts here
+main styling starts here
 =================================*/
 
-
 /*=================================
-  form-container styling starts here
+form-container styling starts here
 =================================*/
 
 .login {
-  margin-bottom: 40px;
-  font-size: 40px;
-  text-align: center;
-  text-transform: capitalize;
+margin-bottom: 40px;
+font-size: 40px;
+text-align: center;
+text-transform: capitalize;
 }
 
 .form-container {
-  width: 30%;
-  margin: 80px auto 0;
-  padding: 60px 40px;
-  border-radius: 20px;
-  background-color: #40DFEF;
-  color: #383838;
+width: 30%;
+margin: 80px auto 0;
+padding: 60px 40px;
+border-radius: 20px;
+background-color: #40DFEF;
+color: #383838;
 }
 
 .form-container form {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
+display: flex;
+flex-direction: column;
+gap: 20px;
 }
 
 .form-group {
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
+display: flex;
+flex-direction: column;
+gap: 5px;
 }
 
-.form-group:nth-child(4) {
-  flex-direction: row;
-  gap: 20px;
+.form-group-gender {
+display: flex;
+flex-direction: row;
+gap: 20px;
 }
 
 .form-group:nth-child(5) { flex-direction: row; }
@@ -164,70 +163,73 @@ li {
 
 .form-group:nth-child(5) .error { margin-left: 40px; }
 
-
 .fName, .lName, .address {
-  box-sizing: border-box;
-  border: none;
-  border-radius: 5px;
-  padding: 10px;
-  font-size: 18px;
-  font-family: inherit;
+box-sizing: border-box;
+border: none;
+border-radius: 5px;
+padding: 10px;
+font-size: 18px;
+font-family: inherit;
 }
 
-.male label, .female label { text-transform: capitalize; }
+.male-div label, .female-div label { text-transform: capitalize; }
 
 .error {
-  display: none;
-  color: #F55353;
-  font-size: 12px;
-  font-style: italic;
+color: #F55353;
+font-size: 12px;
+font-style: italic;
+}
+
+.error-underline { 
+border-bottom: 2px solid #F55353; 
+padding-bottom: 5px;
 }
 
 .btn {
-  padding: 12px 35px;
-  border: 1px solid #525E75;
-  border-radius: 10px;
-  background-color: #525E75;
-  color: #fff;
-  font-size: 16px;
-  text-transform: capitalize;
+padding: 12px 35px;
+border: 1px solid #525E75;
+border-radius: 10px;
+background-color: #525E75;
+color: #fff;
+font-size: 16px;
+text-transform: capitalize;
 }
 
 .btn:hover {
-  background-color: transparent;
-  color: #525E75;
+background-color: transparent;
+color: #525E75;
 }
 
+.hide { display: none; }
 
 /*=================================
-  form-container styling ends here
+form-container styling ends here
 =================================*/
 
-
 /*=================================
-  form-entries styling starts here
+form-entries styling starts here
 =================================*/
 
 .form-entries { margin: 80px 0; }
 
 .entries-list {
-  border: .3px solid #c6cace;
-  display: none;
-  flex-direction: column;
+border: .3px solid #c6cace;
+display: none;
+flex-direction: column;
 }
 
 .entries-item { border-bottom: .3px solid #c6cace; }
 
 .entries-item-list {
-  display: flex;
-  justify-content: space-between;
+display: flex;
+justify-content: space-between;
 }
 
 .entries-item:last-child { border-bottom: none; }
 
 .entries-item-list li {
-  padding: 20px;
-  border-right: .3px solid #c6cace;
+padding: 20px;
+border-right: .3px solid #c6cace;
 }
 
 .entries-item-list li:last-child { border-right: none; }
@@ -237,28 +239,33 @@ li {
 .entries-value:nth-child(4), .delete-btn, .edit-btn { flex-basis: 10%; }
 
 .entries-btn {
-  background-color: transparent;
-  border: none;
-  color: #40DFEF;
-  text-transform: capitalize;
+background-color: transparent;
+border: none;
+color: #40DFEF;
+text-transform: capitalize;
 }
 
 .entries-btn:hover { transform: scale(1.1); }
 
 .error-border { border: 2px solid #F55353; }
 
+.flexShow { display: flex; }
+
+.show { display: block; }
+
+.hide { display: none; }
+
 /*=================================
-  form-entries styling starts here
+form-entries styling starts here
 =================================*/
 
 
-
 /*=================================
-  main styling ends here
+main styling ends here
 =================================*/
 
 /*=================================
-  footer styling starts here
+footer styling starts here
 =================================*/ 
 
 
@@ -266,9 +273,8 @@ li {
 
 
 
-
- /*=================================
-  footer styling ends here
+/*=================================
+footer styling ends here
 =================================*/ 
 
 /*media query starts*/
@@ -276,5 +282,4 @@ li {
 @media only screen and (max-width: 995px) {
 
 
-
-}  
+} 
