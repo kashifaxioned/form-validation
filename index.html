@@ -33,37 +33,37 @@
       <div class="wrapper">
         <div class="form-container">
         <h2 class="login">login</h2>
-          <form  class="login-form">
+          <form action="/" method="GET" class="login-form">
             <div class="form-group">
-              <input type="text" name="fName" placeholder="First Name" class="fName" required>
-              <span class="error">Name should contain only letters</span>
+              <input type="text" name="First-Name" placeholder="First Name" class="fName" >
+              <span class="error hide">Name should contain only letters</span>
             </div>
             <div class="form-group">
-              <input type="text" name="lName" value="" placeholder="Last Name" class="lName" required>
-              <span class="error">Name should contain only letters</span>
+              <input type="text" name="Last Name" value="" placeholder="Last Name" class="lName" >
+              <span class="error hide">Name should contain only letters</span>
             </div>
             <div class="form-group">
-              <textarea name="address" class="address" placeholder="Address" required ></textarea>
-              <span class="error">Write your address</span>
+              <textarea name="address" class="address" placeholder="Address"></textarea>
+              <span class="error hide">Write your address</span>
             </div>
-            <div class="form-group">
-              <div class="male">
-                <input type="radio" name="gender" value="male" class="gender" required>
-                <label for="male">male</label>
+            <div class="form-group-gender">
+              <div class="male-div">
+                <input type="radio" name="gender" value="Male" class="male gender" >
+                <label>male</label>
               </div>
-              <div class="female">
-                <input type="radio" name="gender" value="female" class="gender" required>
-                <label for="female">female</label>
+              <div class="female-div">
+                <input type="radio" name="gender" value="Female" class="female gender" >
+                <label>female</label>
               </div>
-              <span class="error">Please select your gender</span>
+              <span class="error hide">Please select your gender</span>
             </div>
-            <div class="form-group">
-              <input type="checkbox" class="checked" required>
-              <label for="checked">I accept the policy</label>
-              <span class="error">Please accept the policy</span>
+            <div class="form-group-checkbox">
+              <input type="checkbox" class="checkbox" >
+              <label >I accept the policy</label>
+              <span class="error hide">Please accept the policy</span>
             </div>
             <div class="form-control">
-              <button type="submit" class="submit-btn btn">submit</button>
+              <button type="submit" class="btn submit-btn">submit</button>
             </div>
           </form>
         </div>
